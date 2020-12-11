@@ -1,4 +1,4 @@
-def caescar_cipher(input, num)
+def caesar_cipher(input, num)
   my_alphabet = 'abcdefghijklmnopqrstuvwxyz'
   words = input.split
   result = []
@@ -19,6 +19,6 @@ def caescar_cipher(input, num)
   end
   result.join(' ')
 end
-#p caescar_cipher('The quick!', 2)
+#p caesar_cipher('The quick!', 2)
 #
-#p caescar_cipher('The quick brown fox jumped over the lazy dogs', 11) == 'Esp bftnv mczhy qzi ufxapo zgpc esp wlkj ozrd'
+#p caesar_cipher('The quick brown fox jumped over the lazy dogs', 11) == 'Esp bftnv mczhy qzi ufxapo zgpc esp wlkj ozrd'
