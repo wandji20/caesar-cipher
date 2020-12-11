@@ -1,17 +1,24 @@
 def caescar_cipher(input, num)
   my_alphabet = 'abcdefghijklmnopqrstuvwxyz'
   words = input.split
-  (0...words.size).each do |i|
-    words[i].each_char do |letter|
-      flag = false
-      flag = true if  letter < "a"
-      my_index = my_alphabet.index(letter.downcase)
-      new_letter = my_alphabet[(my_index + num)]
-      words[i] = words[i].sub(letter, new_letter.upcase!) if flag
-      words[i] = words[i].sub(letter, new_letter)
-    end
-  end
-  words.join(' ')
-end
+  result = []
+  words.each do |word|
+    word = word.split('')
+    (0...word.length).each do |i|
+      val = word[i] =~ /[a-zA-Z]/
+      next if val.nil?
 
-p caescar_cipher('wanDdji  bertArand       tadcNhu', -3)
+      flag = false
+      flag = true if word[i] < 'a'
+      my_index = my_alphabet.index(word[i].downcase)
+      word[i] = my_alphabet[(my_index + num) % 26]
+      word[i] = flag ? word[i].upcase! : word[i]
+    end
+    word = word.join('')
+    result << word
+  end
+  result.join(' ')
+end
+p caescar_cipher('The quick!', 2)
+
+p caescar_cipher('The quick brown fox jumped over the lazy dogs', 11) == 'Esp bftnv mczhy qzi ufxapo zgpc esp wlkj ozrd'
